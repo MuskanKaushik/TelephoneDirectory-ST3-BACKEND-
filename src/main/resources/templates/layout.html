@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head th:fragment="site-head">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+
+<body>
+<header th:fragment="logged-out" th:remove="tag">
+    <header>
+        <div class="px-3 py-2 bg-dark border-bottom mb-3">
+            <div class="container d-flex flex-wrap justify-content-end">
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-light text-dark me-2" data-bs-toggle="modal" data-bs-target="#Login">Login</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SignUp">Sign-up</button>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <!--Login Up Modal-->
+            <div class="modal fade" id="Login" tabindex="-1" aria-labelledby="LoginLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title w-100" id="LoginLabel">Welcome Back!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!--Login Form-->
+                            <form method="post" th:object="${user}" th:action="@{/users/login}">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" required th:field="*{username}" id="username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label" >Password</label>
+                                    <input type="password" class="form-control" required th:field="*{password}" id="password">
+                                </div>
+                                <br>
+                                <div class="container-fluid text-center">
+                                    <button type="submit" class="btn submit-button btn-success w-50">Login</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="mr-auto">
+                                Not a member? <a class="pointer" data-bs-toggle="modal" data-bs-target="#SignUp">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Sign Up Modal-->
+            <div class="modal fade" id="SignUp"  tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h5 class="modal-title w-100" id="SignUpLabel">Get Started</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <!--Sign Up Form-->
+                            <form method="post" th:object="${user}" th:action="@{/users/registration}">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label" >Username</label>
+                                    <input type="text" class="form-control" placeholder="Enter Username" required id="username" name="username" th:field="${user.username}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="Email" placeholder="Enter Email" required name="email" th:field="${user.email}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Enter Password" required name="password" th:field="${user.password}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="PhoneNumber" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Phone Number"required name="phonenum" th:field="${user.phonenum}">
+                                </div>
+                                <br>
+                                <div class="container-fluid text-center">
+                                    <button type="submit" class="btn btn-success submit-button w-50">Register</button>
+                                </div>
+
+                                <div style="height: 20px;"></div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<a href="users/login.html" th:href="@{/users/login}">Login</a>
+        <a href="users/register.html" th:href="@{/users/registration}">Register</a>-->
+    </header>
+</header>
+
+<header th:fragment="logged-in" th:remove="tag">
+    <header>
+        <!--<a href="posts/create.html" th:href="@{/posts/newpost}">Create Post</a>-->
+        <!--<form method="post" th:action="@{/users/logout}">
+            <input type="submit" value="Logout" />
+        </form>-->
+        <div class="px-3 py-2 bg-dark border-bottom mb-3">
+            <div class="container d-flex flex-wrap justify-content-end">
+
+                <div class="text-end">
+                    <form method="post" th:action="@{/users/logout}">
+                        <button type="submit" value="Logout" class="btn btn-primary">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+</header>
+
+<footer th:fragment="bootstrap-footer" th:remove="tag">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</footer>
+</body>
+</html>
