@@ -30,8 +30,8 @@
                             <!--Login Form-->
                             <form method="post" th:object="${user}" th:action="@{/users/login}">
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" required th:field="*{username}" id="username">
+                                    <label for="uname" class="form-label">Username</label>
+                                    <input type="text" class="form-control" required th:field="*{uname}" id="uname">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label" >Password</label>
@@ -67,8 +67,8 @@
                             <!--Sign Up Form-->
                             <form method="post" th:object="${user}" th:action="@{/users/registration}">
                                 <div class="mb-3">
-                                    <label for="username" class="form-label" >Username</label>
-                                    <input type="text" class="form-control" placeholder="Enter Username" required id="username" name="username" th:field="${user.username}">
+                                    <label for="uname" class="form-label" >Username</label>
+                                    <input type="text" class="form-control" placeholder="Enter Username" required id="uname" name="uname" th:field="${user.uname}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="Email" class="form-label">Email</label>
