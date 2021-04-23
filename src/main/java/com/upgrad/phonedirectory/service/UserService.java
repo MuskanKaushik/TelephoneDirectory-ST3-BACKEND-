@@ -13,14 +13,12 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     // Contain all the business logic and communicate to db
     public User login(User user) {
         User existingUser = userRepository.checkCredentials(user.getUsername());
         if(existingUser!=null){
-            if(!passwordEncoder.matches(user.getPassword(),existingUser.getPassword())) {
+            if(!(existingUser.getPassword()==existingUser.getPassword())) {
                 return null;
             } else {
                 return existingUser;
@@ -34,7 +32,7 @@ public class UserService {
         newUser.setUsername(userToEncrpyt.getUsername());
         newUser.setEmail(userToEncrpyt.getEmail());
         newUser.setPhonenum(userToEncrpyt.getPhonenum());
-        newUser.setPassword(passwordEncoder.encode(userToEncrpyt.getPassword()));
+        newUser.setPassword(userToEncrpyt.getPassword());
         return userRepository.registerUser(newUser);
     }
 }

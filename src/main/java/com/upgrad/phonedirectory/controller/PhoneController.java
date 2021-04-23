@@ -24,7 +24,7 @@ public class PhoneController {
         User user = (User) session.getAttribute("LoggedUser");
         List<Phone> posts = postService.getAllPosts(user.getId());
         model.addAttribute("posts", posts);
-        return "loggedin";
+        return "phonedir";
     }
 
     // AGENDA 1: Map the GET request to "/posts/newpost" -> to get the view of the newpost

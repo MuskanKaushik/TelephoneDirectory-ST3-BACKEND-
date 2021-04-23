@@ -13,8 +13,8 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "uname" ,unique = true)
-    private String uname;
+    @Column(name = "username" ,unique = true)
+    private String username;
 
     @Column(name = "password" ,unique = true)
     private String password;
@@ -48,11 +48,11 @@ public class User {
     }
 
     public String getUsername() {
-        return uname;
+        return username;
     }
 
-    public void setUsername(String uname) {
-        this.uname = uname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
