@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneDir Login</title>
+</head>
+
+<body>
+<div id='header'>
+    <div>Phone Directory</div>
+    <div>
+        <button onclick="window.location='login';">Login</button>
+        <button onclick="window.location='signup';">Signup</button>
+    </div>
+</div>
+<br>
+<form th:object="${user}" th:action="@{/users/login}" method="POST">
+    <h2>Login</h2>
+    <div id='formItems'>
+        <label>Username</label>
+        <input type="text" th:field="*{username}" id="uname">
+
+        <label>Password</label>
+        <input type="password" th:field="*{password}" id="password">
+
+        <input type="submit" value="Login">
+
+    </div>
+</form>
+</body>
+
+</html>

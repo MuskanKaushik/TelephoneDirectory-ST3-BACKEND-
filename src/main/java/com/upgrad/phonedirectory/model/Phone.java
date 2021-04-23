@@ -1,4 +1,4 @@
-package com.project.phonedir.model;
+package com.upgrad.phonedirectory.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;

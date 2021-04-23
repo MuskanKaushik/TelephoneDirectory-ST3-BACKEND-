@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneDir Signup</title>
+</head>
+
+<body>
+<div id='header'>
+    <div>Phone Directory</div>
+    <div>
+        <button onclick="window.location='login';">Login</button>
+        <button onclick="window.location='signup';">Signup</button>
+    </div>
+</div>
+<br>
+<form th:object="${user}" th:action="@{/users/signup}" method="POST">
+    <h2>Signup</h2>
+    <div id='formItems'>
+        <label>Username</label>
+        <input type="text" name="username" id="username">
+
+        <label>Email</label>
+        <input type="email" name="email" id="email">
+
+        <label>Password</label>
+        <input type="password" name="password" id="password">
+
+        <label>Phone number</label>
+        <input type="number" name="pnum" id="pnum">
+
+        <input type="submit" value="Signup">
+
+    </div>
+</form>
+</body>
+
+</html>
